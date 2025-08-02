@@ -15,6 +15,7 @@ const App = () => {
           <Text style={styles.btnText}>{buttonText}</Text>
         </TouchableOpacity>
       </View>
+      <Text style={styles.mainHeading}>Alhamdulillah</Text>
     </View>
   );
 };
