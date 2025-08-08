@@ -1,22 +1,19 @@
-import { useState } from 'react';
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
+import React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import Home from './Home';
+const Stack = createNativeStackNavigator();
 const App = () => {
-  const [buttonText, setButtonText] = useState('Click Me');
-  const onClick = () => {
-    setButtonText(prev => (prev === 'Click Me' ? 'Alhamdulillah' : 'Click Me'));
-  };
-
   return (
-    <View style={styles.container}>
-      <Text style={styles.mainHeading}>Alhamdulillah</Text>
-      <View style={styles.btnContainer}>
-        <TouchableOpacity style={styles.btn} onPress={onClick}>
-          <Text style={styles.btnText}>{buttonText}</Text>
-        </TouchableOpacity>
-      </View>
-      <Text style={styles.mainHeading}>Alhamdulillah</Text>
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator
+        initialRouteName="Home"
+        screenOptions={{ headerShown: false }}
+      >
+        <Stack.Screen name="Home" component={Home} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 };
 
@@ -30,23 +27,6 @@ const styles = StyleSheet.create({
     fontWeight: 700,
     fontSize: 36,
     marginTop: 20,
-  },
-  btnContainer: {
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  btn: {
-    height: 50,
-    width: 100,
-    backgroundColor: 'aqua',
-    borderRadius: 6,
-    justifyContent: 'center',
-    alignItems: 'center',
-  },
-  btnText: {
-    color: 'white',
-    fontWeight: 700,
-    fontSize: 16,
   },
 });
 
